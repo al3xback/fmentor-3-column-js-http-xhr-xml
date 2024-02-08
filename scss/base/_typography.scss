@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as func;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var.$font-family-headings;
+	font-weight: var.$font-weight-700;
+	color: var.$color-very-dark-cyan;
+	line-height: 1.2;
+}
+
+h2 {
+	font-size: 2.67em;
+}
+
+h3 {
+	font-size: 2.2em;
+}
+
+h4 {
+	font-size: 1.8em;
+}
+
+h5 {
+	font-size: 1.4em;
+}
+
+h6 {
+	font-size: 1.2em;
+}
+
+p {
+	font-size: 1em;
+}
+
+strong {
+	font-weight: var.$font-weight-700;
+}

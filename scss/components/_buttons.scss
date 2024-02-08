@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as func;
+
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	background-color: transparent;
+	border: 2px solid transparent;
+	color: inherit;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
+}
+
+.btn--primary {
+	padding: func.em(9) func.em(18);
+	background-color: var.$color-very-light-gray;
+	border-color: var.$color-very-light-gray;
+	border-radius: 22px;
+	color: var.$color-black;
+	mix-blend-mode: screen;
+}
+
+.btn--primary:hover {
+	background-color: transparent;
+	border-color: var.$color-very-light-gray;
+	color: var.$color-very-light-gray;
+}
+
+.btn--link {
+	color: var.$color-dark-cyan;
+}
+
+.btn--link:hover {
+	color: var.$color-very-dark-cyan;
+}

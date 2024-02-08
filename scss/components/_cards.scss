@@ -1,0 +1,62 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as func;
+
+.cards,
+.card {
+	display: flex;
+	flex-direction: column;
+}
+
+.cards {
+	width: 100%;
+	max-width: func.em(360, var.$font-size-primary);
+	margin: func.em(30, var.$font-size-primary) 0
+		func.em(60, var.$font-size-primary);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.card {
+	align-items: flex-start;
+	gap: func.em(25, var.$font-size-primary);
+	padding: func.em(48, var.$font-size-primary);
+	background-color: var.$color-black;
+	color: var.$color-white-light;
+}
+
+.card--sedans {
+	background-color: var.$color-bright-orange;
+}
+
+.card--suvs {
+	background-color: var.$color-dark-cyan;
+}
+
+.card--luxury {
+	background-color: var.$color-very-dark-cyan;
+}
+
+.card__img {
+	width: func.em(60, var.$font-size-primary);
+	height: auto;
+}
+
+.card__title {
+	color: var.$color-very-light-gray;
+	text-transform: uppercase;
+}
+
+.card__btn {
+	margin-top: func.em(25, var.$font-size-primary);
+}
+
+@media (min-width: 51.25em) {
+	.cards {
+		flex-direction: row;
+		max-width: func.em(920, var.$font-size-primary);
+	}
+
+	.card {
+		flex: 1;
+	}
+}
