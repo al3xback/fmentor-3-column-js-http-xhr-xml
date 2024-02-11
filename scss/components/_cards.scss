@@ -60,4 +60,8 @@
 	.card {
 		flex: 1;
 	}
+
+	.card__btn {
+		margin-top: func.em(50, var.$font-size-primary);
+	}
 }
