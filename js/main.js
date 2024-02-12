@@ -5,7 +5,21 @@ const cardTemplate = document.getElementById('card-template');
 const loadingEl = document.querySelector('.loading');
 
 const URL =
-	'https://gist.githubusercontent.com/al3xback/696a65ff6e3c1884b5350f2bf7fb1ca6/raw/b7d4a6241be5ebc9bec7ec4e2ae3e1637d806fec/3-column-data.xml';
+	'https://gist.githubusercontent.com/al3xback/696a65ff6e3c1884b5350f2bf7fb1ca6/raw/53e02181009d5a80e22bb2a2a1f9a8845103a657/3-column-data.xml';
+
+const removeLoading = () => {
+	loadingEl.parentElement.removeChild(loadingEl);
+};
+
+const handleError = (msg) => {
+	removeLoading();
+
+	const errorEl = document.createElement('p');
+	errorEl.className = 'error';
+	errorEl.textContent = msg;
+
+	cardsEl.appendChild(errorEl);
+};
 
 const renderCardsContent = (data) => {
 	const parser = new DOMParser();
@@ -16,7 +30,7 @@ const renderCardsContent = (data) => {
 			.nodeValue;
 	};
 
-	loadingEl.parentElement.removeChild(loadingEl);
+	removeLoading();
 
 	const carsData = dataDoc.getElementsByTagName('car');
 
@@ -45,4 +59,4 @@ const renderCardsContent = (data) => {
 	}
 };
 
-sendHttpRequest('GET', URL, renderCardsContent);
+sendHttpRequest('GET', URL, renderCardsContent, handleError);
