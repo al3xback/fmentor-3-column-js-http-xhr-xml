@@ -25,9 +25,8 @@ const renderCardsContent = (data) => {
 	const parser = new DOMParser();
 	const dataDoc = parser.parseFromString(data, 'text/xml');
 
-	const getElementValue = (parentEl, childEl) => {
-		return parentEl.getElementsByTagName(childEl)[0].childNodes[0]
-			.nodeValue;
+	const getElementValue = (parentEl, name) => {
+		return parentEl.getElementsByTagName(name)[0].childNodes[0].nodeValue;
 	};
 
 	removeLoading();
