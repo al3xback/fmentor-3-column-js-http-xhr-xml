@@ -1,9 +1,10 @@
 import { sendHttpRequest } from './util.js';
 
 const URL =
-	'https://gist.githubusercontent.com/al3xback/696a65ff6e3c1884b5350f2bf7fb1ca6/raw/53e02181009d5a80e22bb2a2a1f9a8845103a657/3-column-data.xml';
+	'https://gist.githubusercontent.com/al3xback/696a65ff6e3c1884b5350f2bf7fb1ca6/raw/18f813d490fc206912739881eb489c68d02ddd08/3-column-data.xml';
 
-const cardsEl = document.querySelector('.cards');
+const cardsWrapperEl = document.querySelector('.cards-wrapper');
+const cardsTemplate = document.getElementById('cards-template');
 const cardTemplate = document.getElementById('card-template');
 const loadingEl = document.querySelector('.loading');
 
@@ -18,7 +19,7 @@ const handleError = (msg) => {
 	errorEl.className = 'error';
 	errorEl.textContent = msg;
 
-	cardsEl.appendChild(errorEl);
+	cardsWrapperEl.appendChild(errorEl);
 };
 
 const renderCardsContent = (data) => {
@@ -29,9 +30,10 @@ const renderCardsContent = (data) => {
 		return parentEl.getElementsByTagName(name)[0].childNodes[0].nodeValue;
 	};
 
-	removeLoading();
-
 	const carsData = dataDoc.getElementsByTagName('car');
+
+	const cardsTemplateNode = document.importNode(cardsTemplate.content, true);
+	const cardsEl = cardsTemplateNode.querySelector('.cards');
 
 	for (const car of carsData) {
 		const name = getElementValue(car, 'name');
@@ -48,14 +50,18 @@ const renderCardsContent = (data) => {
 		const cardTitleEl = cardEl.querySelector('.card__title');
 		cardTitleEl.textContent = name;
 
-		const cardDescEl = cardEl.querySelector('.card__desc');
-		cardDescEl.textContent = description;
+		const cardDescriptionEl = cardEl.querySelector('.card__desc');
+		cardDescriptionEl.textContent = description;
 
 		const cardImageEl = cardEl.querySelector('.card__img');
 		cardImageEl.src = './images/icons/' + image;
 
 		cardsEl.appendChild(cardTemplateNode);
 	}
+
+	/* [init] */
+	removeLoading();
+	cardsWrapperEl.appendChild(cardsTemplateNode);
 };
 
 sendHttpRequest('GET', URL, renderCardsContent, handleError);

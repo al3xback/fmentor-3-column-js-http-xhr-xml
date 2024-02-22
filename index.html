@@ -38,6 +38,7 @@
 	<body>
 		<style>
 			.cards-wrapper {
+				flex: auto;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -53,6 +54,10 @@
 			</div>
 		</template>
 
+		<template id="cards-template">
+			<div class="cards"></div>
+		</template>
+
 		<header>
 			<h1 class="sr-only">3-column preview card component</h1>
 		</header>
@@ -61,7 +66,6 @@
 			<div class="container">
 				<div class="cards-wrapper">
 					<p class="loading">Fetching cards data...</p>
-					<div class="cards"></div>
 				</div>
 			</div>
 		</main>
